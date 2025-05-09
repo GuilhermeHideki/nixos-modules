@@ -4,6 +4,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ./tools.nix
+  ];
+
   options.${namespace} = {
     shell.aliases = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;

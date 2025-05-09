@@ -11,5 +11,9 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosModules = {
     };
+
+    homeManagerModules = {
+      all = import ./modules/home;
+    };
   };
 }

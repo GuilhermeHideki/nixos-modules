@@ -21,6 +21,10 @@ in {
       enable = lib.mkDefault true;
       package = pkgs.gitMinimal;
 
+      includes = [
+        {path = "~/.config/git/.gitconfig";}
+      ];
+
       delta.enable = true;
 
       aliases = {

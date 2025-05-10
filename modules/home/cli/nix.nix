@@ -8,6 +8,7 @@
   ...
 }: let
   homeDir = builtins.toPath "/persist/${config.home.homeDirectory}";
+  # FIXME: update path
   nixosRepo = builtins.toPath "${homeDir}/prj/gitlab.com/ghkd/nixos";
 in {
   config = {

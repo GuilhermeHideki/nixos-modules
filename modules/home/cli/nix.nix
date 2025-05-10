@@ -25,7 +25,7 @@ in {
     ];
 
     home.sessionVariables = {
-      NIXOS_REPO = nixosRepo
+      NIXOS_REPO = nixosRepo;
     };
   };
 }

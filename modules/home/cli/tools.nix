@@ -96,6 +96,8 @@
       httpie
 
       btop
+
+      fastfetch
     ];
   };
 }

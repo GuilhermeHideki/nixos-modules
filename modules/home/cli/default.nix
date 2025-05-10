@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./bash
     ./git.nix
     ./nix.nix
     ./tools.nix

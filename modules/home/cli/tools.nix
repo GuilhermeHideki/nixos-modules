@@ -60,9 +60,12 @@
         sudo = "sudo ";
 
         cat = "bat --plain";
-        c = "code-insiders";
         v = "sudo nvim";
       }
+      (lib.mkIf config.programs.vscode.enable {
+        c = lib.getExe config.programs.vscode.package;
+        code = lib.getExe config.programs.vscode.package;
+      })
       (lib.mkIf config.programs.television.enable {
         env = "tv env";
         h = ''

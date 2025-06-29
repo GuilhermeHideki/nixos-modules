@@ -51,6 +51,14 @@
         lt = "ls --tree";
       }
       {
+        grep = "grep --color=auto";
+        egrep = "grep -E --color=auto";
+        fgrep = "grep -F --color=auto";
+      }
+      {
+        ip = "ip --color";
+      }
+      {
         # Windows
         cls = "clear";
         dir = "ls";

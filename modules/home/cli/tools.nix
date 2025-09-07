@@ -28,13 +28,13 @@
 
     programs.television = {
       enable = true;
+      enableZshIntegration = config.programs.zsh.enable;
       settings = {
         tick_rate = 50;
-        ui = {
-          use_nerd_font_icons = true;
-        };
+        ui.use_nerd_font_icons = true;
         keybindings = {
-          quit = ["esc" "ctrl-c"];
+          esc = "quit";
+          ctrl-c = "quit";
         };
       };
     };

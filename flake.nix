@@ -13,6 +13,7 @@
     home-manager,
     ...
   }: let
+    lib = nixpkgs.lib // home-manager.lib;
     supportedSystems = ["x86_64-linux" "aarch64-linux"];
     forAllSystems = f:
       nixpkgs.lib.genAttrs supportedSystems (
@@ -23,7 +24,10 @@
           }
       );
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter = forAllSystems ({pkgs, ...}:
+      pkgs.writeShellScriptBin "alejandra" ''
+        exec ${lib.getExe pkgs.alejandra} -qq **/*.nix "$@"
+      '');
 
     nixosModules = {
       all = import ./modules/nixos;

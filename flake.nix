@@ -24,6 +24,15 @@
           }
       );
   in {
+    devShells = let
+      # TODO: use pipe-operator (|>)
+      shellKeys = let
+        allShells = builtins.attrNames (builtins.readDir ./shells);
+        validShells = builtins.filter (name: lib.hasSuffix ".nix" name) allShells;
+      in map (name: lib.removeSuffix ".nix" name) validShells;
+      loadShells = args: lib.genAttrs shellKeys (name: import (./shells/${name}.nix) args);
+    in forAllSystems ({ pkgs, system }: loadShells { inherit pkgs lib system; });
+
     formatter = forAllSystems ({pkgs, ...}:
       pkgs.writeShellScriptBin "alejandra" ''
         exec ${lib.getExe pkgs.alejandra} -qq **/*.nix "$@"

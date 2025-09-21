@@ -9,6 +9,7 @@
 in {
   imports = [
     ./btrfs-lvm-luks.nix
+    ./btrfs-lvm.nix
     ./disko.nix
     ./mounts.nix
   ];
